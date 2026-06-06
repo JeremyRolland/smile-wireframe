@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="margin:0;padding:18px;display:flex;justify-content:center;background:transparent">
+<div class="scr7"><style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+
+.scr7 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.scr7 figure.ph {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.scr7 figcaption {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #555;
+}
+
+.scr7 .screen {
+  width: 300px;
+  height: 640px;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 50% 42%, #1A6FC0 0%, rgba(26,111,192,0) 34%),
+    repeating-conic-gradient(from -90deg at 50% 42%, #52A6E0 0deg 11.25deg, #0F478C 11.25deg 22.5deg),
+    #0F478C;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Encoche */
+.scr7 .screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 22px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 0 0 16px 16px;
+  z-index: 100;
+}
+
+/* Barre de retour */
+.scr7 .topbar {
+  display: flex;
+  align-items: center;
+  padding: 28px 16px 8px 16px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.scr7 .topbar-back {
+  color: #FFC233;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.scr7 .topbar-back span.arrow {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.scr7 .topbar-title {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  flex: 1;
+  text-align: center;
+  margin-right: 52px;
+}
+
+/* Onglets */
+.scr7 .tabs {
+  display: flex;
+  align-items: center;
+  margin: 0 10px 8px 10px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.30);
+  border-radius: 24px;
+  padding: 3px;
+  flex-shrink: 0;
+  backdrop-filter: blur(6px);
+}
+
+.scr7 .tab {
+  flex: 1;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.75);
+  padding: 5px 2px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.scr7 .tab.active {
+  background: #FFC233;
+  color: #0F478C;
+}
+
+/* Zone contenu scrollable */
+.scr7 .content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: none;
+}
+.scr7 .content::-webkit-scrollbar { display: none; }
+
+/* Aperçu */
+.scr7 .preview-panel {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.30);
+  border-radius: 20px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  backdrop-filter: blur(6px);
+}
+
+.scr7 .preview-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.8);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.scr7 .avatar-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scr7 .frame-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  background:
+    linear-gradient(#fff8ee, #fff8ee) padding-box,
+    linear-gradient(135deg, #FFD15C, #FFC233, #E8A91E, #FFD15C) border-box;
+  box-shadow: 0 0 12px rgba(255,194,51,0.6), 0 0 0 2px rgba(255,255,255,0.2);
+}
+
+.scr7 .frame-stars {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #FFD15C 0%, #FFC233 40%, #E8A91E 60%, #FFD15C 100%) border-box;
+  clip-path: none;
+}
+
+/* Petites étoiles décoratives sur le cadre */
+.scr7 .star-deco {
+  position: absolute;
+  font-size: 9px;
+  line-height: 1;
+}
+.scr7 .star-deco.s1 { top: -2px; left: 50%; transform: translateX(-50%); }
+.scr7 .star-deco.s2 { bottom: -2px; left: 50%; transform: translateX(-50%); }
+.scr7 .star-deco.s3 { left: -2px; top: 50%; transform: translateY(-50%); }
+.scr7 .star-deco.s4 { right: -2px; top: 50%; transform: translateY(-50%); }
+
+.scr7 .avatar-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFF8EE 0%, #FFE8C0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.scr7 .preview-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.scr7 .preview-frame-name {
+  font-size: 13px;
+  font-weight: 900;
+  color: #FFC233;
+}
+
+.scr7 .preview-frame-sub {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Section titre grille */
+.scr7 .section-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.8);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 0 2px;
+}
+
+/* Grille cadres */
+.scr7 .frames-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.scr7 .frame-card {
+  background: rgba(255,255,255,.14);
+  border: 1.5px solid rgba(255,255,255,.30);
+  border-radius: 14px;
+  padding: 8px 4px 7px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+.scr7 .frame-card.selected {
+  border-color: #FFC233;
+  background: rgba(255,194,51,0.18);
+  box-shadow: 0 0 10px rgba(255,194,51,0.4);
+}
+
+.scr7 .frame-card.locked {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Mini aperçu cadre dans la grille */
+.scr7 .mini-avatar {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.scr7 .mini-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFF8EE 0%, #FFE8C0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cadres mini styles */
+.scr7 .mini-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.scr7 .mini-ring.gold {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #FFD15C, #E8A91E) border-box;
+}
+.scr7 .mini-ring.silver {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #D0D0D0, #A0A0A0) border-box;
+}
+.scr7 .mini-ring.rainbow {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    conic-gradient(#FF6B6B, #FFD93D, #6BCB77, #4D96FF, #FF6B6B) border-box;
+}
+.scr7 .mini-ring.floral {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #E91E63, #FF80AB) border-box;
+}
+.scr7 .mini-ring.cosmic {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #7C6CF0, #0F478C) border-box;
+}
+.scr7 .mini-ring.nature {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #4CAF50, #8D6E63) border-box;
+}
+.scr7 .mini-ring.fire {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #FF5722, #FFD93D) border-box;
+}
+.scr7 .mini-ring.crystal {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(135deg, #00BCD4, #7C6CF0) border-box;
+}
+.scr7 .mini-ring.legend {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    conic-gradient(#FFD700, #FF6B35, #7C6CF0, #00BCD4, #FFD700) border-box;
+}
+
+.scr7 .frame-name {
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.scr7 .frame-badge {
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.scr7 .badge-equipped {
+  background: #FFC233;
+  color: #0F478C;
+}
+
+.scr7 .badge-equip {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.scr7 .badge-locked {
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.scr7 .lock-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.scr7 .lock-condition {
+  font-size: 7.5px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 60px;
+}
+
+/* Nav basse */
+.scr7 .bottom-nav {
+  display: flex;
+  align-items: center;
+  background: #FFF8EE;
+  border-radius: 0 0 44px 44px;
+  padding: 6px 4px 10px 4px;
+  flex-shrink: 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+}
+
+.scr7 .nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.scr7 .nav-item .nav-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.scr7 .nav-item .nav-label {
+  font-size: 8px;
+  font-weight: 800;
+  color: #aaa;
+}
+
+.scr7 .nav-item.active .nav-label {
+  color: #FFC233;
+}
+
+.scr7 .nav-fab {
+  flex: 0 0 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.scr7 .nav-fab-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FFD15C 0%, #FFC233 50%, #E8A91E 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(255,194,51,0.5);
+  margin-top: -18px;
+}
+
+.scr7 .nav-fab .nav-label {
+  font-size: 8px;
+  font-weight: 800;
+  color: #aaa;
+}
+
+/* Profil actif (on est dans Profil) */
+.scr7 .nav-item.active .nav-icon { filter: none; }
+.scr7 .nav-item.active .nav-label { color: #FFC233; }
+
+</style>
+<figure class="ph">
+  <div class="screen">
+
+    <!-- Encoche (via ::before) -->
+
+    <!-- Barre de retour -->
+    <div class="topbar">
+      <div class="topbar-back"><span class="arrow">‹</span> Personnalisation</div>
+      <div class="topbar-title"></div>
+    </div>
+
+    <!-- Onglets -->
+    <div class="tabs">
+      <div class="tab">Avatars</div>
+      <div class="tab active">Cadres</div>
+      <div class="tab">Bannières</div>
+      <div class="tab">Médailles</div>
+    </div>
+
+    <!-- Contenu scrollable -->
+    <div class="content">
+
+      <!-- Aperçu -->
+      <div class="preview-panel">
+        <div class="preview-label">Aperçu</div>
+        <div class="avatar-wrapper">
+          <div class="frame-ring"></div>
+          <div class="star-deco s1">⭐</div>
+          <div class="star-deco s2">⭐</div>
+          <div class="star-deco s3">⭐</div>
+          <div class="star-deco s4">⭐</div>
+          <div class="avatar-circle">😊</div>
+        </div>
+        <div class="preview-info">
+          <div class="preview-frame-name">✨ Cadre Doré</div>
+          <div class="preview-frame-sub">Équipé actuellement</div>
+        </div>
+      </div>
+
+      <!-- Grille : Possédés -->
+      <div class="section-title">Possédés (4)</div>
+      <div class="frames-grid">
+
+        <!-- Doré — équipé -->
+        <div class="frame-card selected">
+          <div class="mini-avatar">
+            <div class="mini-ring gold"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Doré</div>
+          <div class="frame-badge badge-equipped">✓ Équipé</div>
+        </div>
+
+        <!-- Argenté -->
+        <div class="frame-card">
+          <div class="mini-avatar">
+            <div class="mini-ring silver"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Argenté</div>
+          <div class="frame-badge badge-equip">Équiper</div>
+        </div>
+
+        <!-- Fleuri -->
+        <div class="frame-card">
+          <div class="mini-avatar">
+            <div class="mini-ring floral"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Fleuri 🌸</div>
+          <div class="frame-badge badge-equip">Équiper</div>
+        </div>
+
+        <!-- Nature -->
+        <div class="frame-card">
+          <div class="mini-avatar">
+            <div class="mini-ring nature"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Nature 🌿</div>
+          <div class="frame-badge badge-equip">Équiper</div>
+        </div>
+
+      </div>
+
+      <!-- Grille : Verrouillés -->
+      <div class="section-title">À débloquer (5)</div>
+      <div class="frames-grid">
+
+        <!-- Arc-en-ciel -->
+        <div class="frame-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="mini-avatar">
+            <div class="mini-ring rainbow"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Arc-en-ciel</div>
+          <div class="lock-condition">5 victoires</div>
+        </div>
+
+        <!-- Cosmique -->
+        <div class="frame-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="mini-avatar">
+            <div class="mini-ring cosmic"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Cosmique 🔮</div>
+          <div class="lock-condition">Niv. 10</div>
+        </div>
+
+        <!-- Feu -->
+        <div class="frame-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="mini-avatar">
+            <div class="mini-ring fire"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Flammes 🔥</div>
+          <div class="lock-condition">50 parties</div>
+        </div>
+
+        <!-- Crystal -->
+        <div class="frame-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="mini-avatar">
+            <div class="mini-ring crystal"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Cristal 💎</div>
+          <div class="lock-condition">Série de 3</div>
+        </div>
+
+        <!-- Légende -->
+        <div class="frame-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="mini-avatar">
+            <div class="mini-ring legend"></div>
+            <div class="mini-circle">😊</div>
+          </div>
+          <div class="frame-name">Légende 👑</div>
+          <div class="lock-condition">100 victoires</div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- fin content -->
+
+    <!-- Navigation basse -->
+    <div class="bottom-nav">
+      <div class="nav-item">
+        <div class="nav-icon">🏠</div>
+        <div class="nav-label">Accueil</div>
+      </div>
+      <div class="nav-item active">
+        <div class="nav-icon">👤</div>
+        <div class="nav-label">Profil</div>
+      </div>
+      <div class="nav-fab">
+        <div class="nav-fab-btn">▶</div>
+        <div class="nav-label">Jouer</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">🎯</div>
+        <div class="nav-label">Missions</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">🛍️</div>
+        <div class="nav-label">Boutique</div>
+      </div>
+    </div>
+
+  </div>
+  <figcaption>Personnalisation — Cadres</figcaption>
+</figure>
+</div>
+
+<script>
+(function(){
+  var R={accueil:'01-accueil.html',partie:'02-partie.html',jouer:'03-jouer.html',resultat:'04-resultat.html',
+    missions:'05-missions.html',cadeaux:'06-cadeaux.html',succes:'07-succes.html',profil:'08-profil.html',
+    pavatars:'09-perso-avatars.html',pcadres:'10-perso-cadres.html',pbannieres:'11-perso-bannieres.html',
+    pmedailles:'12-perso-medailles.html',boutique:'13-boutique.html',encyclo:'14-encyclopedie.html',
+    fiche:'15-encyclopedie-fiche.html',parametres:'16-parametres.html'};
+  function route(t){
+    if(!t) return null; t=t.toLowerCase();
+    if(t==='avatars') return R.pavatars;
+    if(t==='cadres') return R.pcadres;
+    if((t.indexOf('bannière')>-1||t.indexOf('banniere')>-1)&&t.length<14) return R.pbannieres;
+    if(t==='médailles'||t==='medailles') return R.pmedailles;
+    if(t.indexOf('personnalis')>-1) return R.pavatars;
+    if(t.indexOf('encyclop')>-1) return R.encyclo;
+    if(/\bjoueurs\b/.test(t)||t.indexOf('grande tablée')>-1||t.indexOf('duel')>-1||t.indexOf('trio')>-1) return R.partie;
+    if(t.indexOf('jouer')>-1) return R.jouer;
+    if(t.indexOf('paramètre')>-1||t.indexOf('parametre')>-1||t.indexOf('réglage')>-1) return R.parametres;
+    if(t.indexOf('cadeau')>-1) return R.cadeaux;
+    if(t.indexOf('succès')>-1||t.indexOf('bientôt débloqué')>-1||t.indexOf('assidu')>-1||t.indexOf('prouesse')>-1) return R.succes;
+    if(t.indexOf('mission')>-1) return R.missions;
+    if(t.indexOf('boutique')>-1||t.indexOf('acheter')>-1||t.indexOf('obtenir')>-1||t.indexOf('offre')>-1||t.indexOf('promo')>-1||t.indexOf('recharge')>-1) return R.boutique;
+    if(t.indexOf('profil')>-1) return R.profil;
+    if(t.indexOf('accueil')>-1) return R.accueil;
+    return null;
+  }
+  document.addEventListener('click',function(e){
+    var node=e.target, hops=0;
+    while(node && !(node.classList&&node.classList.contains('screen')) && hops<5){
+      var cls=(node.className&&node.className.baseVal!==undefined)?node.className.baseVal:(node.className||'');
+      var tx=(node.textContent||'').trim();
+      if((/back/i.test(''+cls))||tx==='‹'||tx==='←'){ e.preventDefault(); if(history.length>1) history.back(); else location.href=R.accueil; return; }
+      var f=route(tx);
+      if(f){ e.preventDefault(); location.href=f; return; }
+      node=node.parentElement; hops++;
+    }
+  },true);
+})();
+</script>
+</body></html>

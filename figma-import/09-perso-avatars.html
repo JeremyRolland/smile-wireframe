@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="margin:0;padding:18px;display:flex;justify-content:center;background:transparent">
+<div class="scr6"><style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+
+.scr6 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.scr6 figure.ph {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.scr6 figcaption {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #555;
+}
+
+.scr6 .screen {
+  width: 300px;
+  height: 640px;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 50% 42%, #1A6FC0 0%, rgba(26,111,192,0) 34%),
+    repeating-conic-gradient(from -90deg at 50% 42%, #52A6E0 0deg 11.25deg, #0F478C 11.25deg 22.5deg),
+    #0F478C;
+  font-family: 'Nunito', sans-serif;
+}
+
+.scr6 .screen::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 5px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 3px;
+  z-index: 100;
+}
+
+/* TOP BAR */
+.scr6 .top-bar {
+  display: flex;
+  align-items: center;
+  padding: 22px 16px 10px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.scr6 .back-btn {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.32);
+  border-radius: 20px;
+  padding: 5px 12px 5px 8px;
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  backdrop-filter: blur(6px);
+}
+
+.scr6 .top-bar-title {
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  flex: 1;
+  text-align: center;
+  margin-right: 48px;
+}
+
+/* TABS */
+.scr6 .tabs-row {
+  display: flex;
+  margin: 0 12px 10px;
+  background: rgba(0,0,0,0.18);
+  border-radius: 22px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.scr6 .tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 5px 2px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.65);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.scr6 .tab-item.active {
+  background: #FFC233;
+  color: #0F478C;
+}
+
+/* MAIN SCROLL ZONE */
+.scr6 .scroll-zone {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 12px 8px;
+  scrollbar-width: none;
+}
+.scr6 .scroll-zone::-webkit-scrollbar { display: none; }
+
+/* PREVIEW */
+.scr6 .preview-panel {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.30);
+  border-radius: 20px;
+  padding: 14px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+
+.scr6 .preview-label {
+  font-weight: 800;
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scr6 .preview-avatar {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFD15C, #FFC233, #E8A91E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 46px;
+  border: 3px solid rgba(255,255,255,0.5);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+  flex-shrink: 0;
+}
+
+.scr6 .preview-name {
+  font-weight: 900;
+  font-size: 14px;
+  color: #fff;
+}
+
+.scr6 .preview-equipped-badge {
+  background: #4CAF50;
+  color: #fff;
+  font-weight: 800;
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+/* GRID SECTION */
+.scr6 .section-label {
+  font-weight: 900;
+  font-size: 11px;
+  color: rgba(255,255,255,0.80);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+.scr6 .avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.scr6 .av-card {
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  padding: 10px 6px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: transform 0.15s;
+}
+
+.scr6 .av-card.equipped {
+  background: rgba(255,194,51,0.20);
+  border: 1.5px solid #FFC233;
+}
+
+.scr6 .av-card.locked {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.scr6 .av-emoji {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.scr6 .av-name {
+  font-weight: 800;
+  font-size: 9px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.scr6 .av-btn {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 8.5px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.scr6 .av-btn.equipped-btn {
+  background: #FFC233;
+  color: #0F478C;
+}
+
+.scr6 .av-btn.equip-btn {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.scr6 .av-btn.locked-btn {
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.18);
+  cursor: default;
+  font-size: 8px;
+  padding: 3px 6px;
+}
+
+.scr6 .lock-icon {
+  font-size: 11px;
+  margin-bottom: -2px;
+}
+
+.scr6 .lock-cond {
+  font-weight: 700;
+  font-size: 7.5px;
+  color: rgba(255,255,255,0.50);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* NAV BAR */
+.scr6 .nav-bar {
+  background: #FFF8EE;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 6px 14px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.scr6 .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 8.5px;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.scr6 .nav-item .nav-ico {
+  font-size: 18px;
+}
+
+.scr6 .nav-item.active {
+  color: #FFC233;
+}
+
+.scr6 .nav-fab {
+  background: linear-gradient(160deg, #FFD15C, #FFC233, #E8A91E);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 14px rgba(255,194,51,0.55);
+  margin-top: -18px;
+  cursor: pointer;
+  border: 3px solid #FFF8EE;
+  color: #0F478C;
+}
+</style>
+
+<figure class="ph">
+  <div class="screen">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <button class="back-btn">‹ Personnalisation</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-row">
+      <div class="tab-item active">Avatars</div>
+      <div class="tab-item">Cadres</div>
+      <div class="tab-item">Bannières</div>
+      <div class="tab-item">Médailles</div>
+    </div>
+
+    <!-- SCROLLABLE CONTENT -->
+    <div class="scroll-zone">
+
+      <!-- PREVIEW -->
+      <div class="preview-panel">
+        <div class="preview-label">Aperçu</div>
+        <div class="preview-avatar">🧑‍🚀</div>
+        <div class="preview-name">Astronaute</div>
+        <div class="preview-equipped-badge">✓ Équipé</div>
+      </div>
+
+      <!-- OWNED -->
+      <div class="section-label">Possédés</div>
+      <div class="avatar-grid">
+
+        <div class="av-card equipped">
+          <div class="av-emoji">🧑‍🚀</div>
+          <div class="av-name">Astronaute</div>
+          <button class="av-btn equipped-btn">✓ Équipé</button>
+        </div>
+
+        <div class="av-card">
+          <div class="av-emoji">👩‍🍳</div>
+          <div class="av-name">Cheffe</div>
+          <button class="av-btn equip-btn">Équiper</button>
+        </div>
+
+        <div class="av-card">
+          <div class="av-emoji">🧙</div>
+          <div class="av-name">Mage</div>
+          <button class="av-btn equip-btn">Équiper</button>
+        </div>
+
+        <div class="av-card">
+          <div class="av-emoji">🦊</div>
+          <div class="av-name">Renard</div>
+          <button class="av-btn equip-btn">Équiper</button>
+        </div>
+
+        <div class="av-card">
+          <div class="av-emoji">🐸</div>
+          <div class="av-name">Grenouille</div>
+          <button class="av-btn equip-btn">Équiper</button>
+        </div>
+
+        <div class="av-card">
+          <div class="av-emoji">🤖</div>
+          <div class="av-name">Robot</div>
+          <button class="av-btn equip-btn">Équiper</button>
+        </div>
+
+      </div>
+
+      <!-- LOCKED -->
+      <div class="section-label">Verrouillés</div>
+      <div class="avatar-grid">
+
+        <div class="av-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="av-emoji">🧜</div>
+          <div class="av-name">Sirène</div>
+          <div class="lock-cond">Succès<br>"Flirt ×10"</div>
+        </div>
+
+        <div class="av-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="av-emoji">🦁</div>
+          <div class="av-name">Lion</div>
+          <div class="lock-cond">Boutique</div>
+        </div>
+
+        <div class="av-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="av-emoji">🧝</div>
+          <div class="av-name">Elfe</div>
+          <div class="lock-cond">Succès<br>"Études max"</div>
+        </div>
+
+        <div class="av-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="av-emoji">🐉</div>
+          <div class="av-name">Dragon</div>
+          <div class="lock-cond">Boutique</div>
+        </div>
+
+        <div class="av-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="av-emoji">👑</div>
+          <div class="av-name">Monarque</div>
+          <div class="lock-cond">Succès<br>"Victoire ×5"</div>
+        </div>
+
+        <div class="av-card locked">
+          <div class="lock-icon">🔒</div>
+          <div class="av-emoji">🪄</div>
+          <div class="av-name">Enchanteur</div>
+          <div class="lock-cond">Boutique</div>
+        </div>
+
+      </div>
+
+    </div><!-- /scroll-zone -->
+
+    <!-- NAV BAR -->
+    <div class="nav-bar">
+      <div class="nav-item">
+        <span class="nav-ico">🏠</span>
+        Accueil
+      </div>
+      <div class="nav-item active">
+        <span class="nav-ico">👤</span>
+        Profil
+      </div>
+      <div class="nav-fab">▶</div>
+      <div class="nav-item">
+        <span class="nav-ico">🎯</span>
+        Missions
+      </div>
+      <div class="nav-item">
+        <span class="nav-ico">🛍️</span>
+        Boutique
+      </div>
+    </div>
+
+  </div>
+  <figcaption>Personnalisation — Avatars</figcaption>
+</figure>
+</div>
+
+<script>
+(function(){
+  var R={accueil:'01-accueil.html',partie:'02-partie.html',jouer:'03-jouer.html',resultat:'04-resultat.html',
+    missions:'05-missions.html',cadeaux:'06-cadeaux.html',succes:'07-succes.html',profil:'08-profil.html',
+    pavatars:'09-perso-avatars.html',pcadres:'10-perso-cadres.html',pbannieres:'11-perso-bannieres.html',
+    pmedailles:'12-perso-medailles.html',boutique:'13-boutique.html',encyclo:'14-encyclopedie.html',
+    fiche:'15-encyclopedie-fiche.html',parametres:'16-parametres.html'};
+  function route(t){
+    if(!t) return null; t=t.toLowerCase();
+    if(t==='avatars') return R.pavatars;
+    if(t==='cadres') return R.pcadres;
+    if((t.indexOf('bannière')>-1||t.indexOf('banniere')>-1)&&t.length<14) return R.pbannieres;
+    if(t==='médailles'||t==='medailles') return R.pmedailles;
+    if(t.indexOf('personnalis')>-1) return R.pavatars;
+    if(t.indexOf('encyclop')>-1) return R.encyclo;
+    if(/\bjoueurs\b/.test(t)||t.indexOf('grande tablée')>-1||t.indexOf('duel')>-1||t.indexOf('trio')>-1) return R.partie;
+    if(t.indexOf('jouer')>-1) return R.jouer;
+    if(t.indexOf('paramètre')>-1||t.indexOf('parametre')>-1||t.indexOf('réglage')>-1) return R.parametres;
+    if(t.indexOf('cadeau')>-1) return R.cadeaux;
+    if(t.indexOf('succès')>-1||t.indexOf('bientôt débloqué')>-1||t.indexOf('assidu')>-1||t.indexOf('prouesse')>-1) return R.succes;
+    if(t.indexOf('mission')>-1) return R.missions;
+    if(t.indexOf('boutique')>-1||t.indexOf('acheter')>-1||t.indexOf('obtenir')>-1||t.indexOf('offre')>-1||t.indexOf('promo')>-1||t.indexOf('recharge')>-1) return R.boutique;
+    if(t.indexOf('profil')>-1) return R.profil;
+    if(t.indexOf('accueil')>-1) return R.accueil;
+    return null;
+  }
+  document.addEventListener('click',function(e){
+    var node=e.target, hops=0;
+    while(node && !(node.classList&&node.classList.contains('screen')) && hops<5){
+      var cls=(node.className&&node.className.baseVal!==undefined)?node.className.baseVal:(node.className||'');
+      var tx=(node.textContent||'').trim();
+      if((/back/i.test(''+cls))||tx==='‹'||tx==='←'){ e.preventDefault(); if(history.length>1) history.back(); else location.href=R.accueil; return; }
+      var f=route(tx);
+      if(f){ e.preventDefault(); location.href=f; return; }
+      node=node.parentElement; hops++;
+    }
+  },true);
+})();
+</script>
+</body></html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="margin:0;padding:18px;display:flex;justify-content:center;background:transparent">
+<div class="scr0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+
+    .scr0 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .scr0 figure.ph {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .scr0 figure.ph figcaption {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #555;
+      letter-spacing: .5px;
+    }
+
+    .scr0 .screen {
+      width: 300px;
+      height: 640px;
+      border-radius: 44px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at 50% 42%, #1A6FC0 0%, rgba(26,111,192,0) 34%),
+        repeating-conic-gradient(from -90deg at 50% 42%, #52A6E0 0deg 11.25deg, #0F478C 11.25deg 22.5deg),
+        #0F478C;
+      box-shadow: 0 8px 40px rgba(15,71,140,.45), 0 2px 8px rgba(0,0,0,.18);
+    }
+
+    /* Encoche */
+    .scr0 .screen::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 22px;
+      background: #000;
+      border-radius: 0 0 16px 16px;
+      z-index: 100;
+    }
+
+    /* ---- HEADER ---- */
+    .scr0 .header {
+      padding: 30px 18px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .scr0 .header-title {
+      font-weight: 900;
+      font-size: 22px;
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+
+    .scr0 .header-sub {
+      font-weight: 700;
+      font-size: 11px;
+      color: rgba(255,255,255,.75);
+      letter-spacing: .3px;
+    }
+
+    /* ---- SCROLL ZONE ---- */
+    .scr0 .scroll-zone {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 6px 14px 10px;
+    }
+
+    /* ---- EVENT CARD ---- */
+    .scr0 .event-card {
+      border-radius: 22px;
+      background: linear-gradient(145deg, #FFD15C 0%, #FFC233 60%, #E8A91E 100%);
+      box-shadow: 0 6px 24px rgba(255,194,51,.45), 0 2px 6px rgba(0,0,0,.14);
+      padding: 16px 16px 14px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .scr0 .event-card::after {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.13);
+    }
+
+    .scr0 .event-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #E53935;
+      color: #fff;
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: .6px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      align-self: flex-start;
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgba(229,57,53,.4);
+    }
+
+    .scr0 .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      animation: blink_scr0 1.1s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink_scr0 {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .2; }
+    }
+
+    .scr0 .event-label {
+      font-weight: 900;
+      font-size: 20px;
+      color: #0F478C;
+      line-height: 1.1;
+      text-shadow: 0 1px 3px rgba(255,255,255,.4);
+    }
+
+    .scr0 .event-desc {
+      font-weight: 700;
+      font-size: 11px;
+      color: rgba(15,71,140,.75);
+    }
+
+    .scr0 .event-play-btn {
+      align-self: flex-start;
+      background: #0F478C;
+      color: #FFC233;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 12px;
+      border: none;
+      border-radius: 30px;
+      padding: 7px 18px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(15,71,140,.35);
+      letter-spacing: .3px;
+    }
+
+    /* ---- SECTION TITRE ---- */
+    .scr0 .section-label {
+      font-weight: 800;
+      font-size: 12px;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding-left: 2px;
+    }
+
+    /* ---- LISTE PARTIES ---- */
+    .scr0 .parties-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .scr0 .party-row {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.30);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .scr0 .party-row:active {
+      background: rgba(255,255,255,.22);
+    }
+
+    .scr0 .party-bubble {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #FFC233;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 13px;
+      color: #0F478C;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(255,194,51,.4);
+    }
+
+    .scr0 .party-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .scr0 .party-name {
+      font-weight: 800;
+      font-size: 12px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .scr0 .party-meta {
+      font-weight: 700;
+      font-size: 10px;
+      color: rgba(255,255,255,.65);
+    }
+
+    .scr0 .party-chevron {
+      font-size: 14px;
+      color: rgba(255,255,255,.5);
+      flex-shrink: 0;
+    }
+
+    /* ---- NAV BAR ---- */
+    .scr0 .navbar {
+      background: #FFF8EE;
+      border-radius: 0 0 44px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 8px 6px 14px;
+      box-shadow: 0 -3px 14px rgba(0,0,0,.10);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .scr0 .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      cursor: pointer;
+      min-width: 44px;
+    }
+
+    .scr0 .nav-icon {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .scr0 .nav-label {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 9px;
+      color: #bbb;
+    }
+
+    .scr0 .nav-item.active .nav-label {
+      color: #FFC233;
+    }
+
+    /* FAB central */
+    .scr0 .nav-fab {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #FFD15C 0%, #FFC233 60%, #E8A91E 100%);
+      box-shadow: 0 4px 16px rgba(255,194,51,.55), 0 2px 6px rgba(0,0,0,.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-top: -14px;
+      gap: 1px;
+      flex-shrink: 0;
+    }
+
+    .scr0 .nav-fab .nav-icon {
+      font-size: 20px;
+    }
+
+    .scr0 .nav-fab .nav-label {
+      font-size: 8px;
+      font-weight: 900;
+      color: #0F478C;
+    }
+  </style>
+
+  <figure class="ph">
+    <div class="screen">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="header-title">Jouer 🎮</div>
+        <div class="header-sub">Choisis ton mode de partie</div>
+      </div>
+
+      <!-- Scroll zone -->
+      <div class="scroll-zone">
+
+        <!-- Event card -->
+        <div class="event-card">
+          <span class="event-badge"><span class="live-dot"></span>Événement en cours</span>
+          <div class="event-label">Partie Rapide ⚡</div>
+          <div class="event-desc">Joue en moins de 10 min · Récompenses x2</div>
+          <button class="event-play-btn">▶ Jouer maintenant</button>
+        </div>
+
+        <!-- Parties classiques -->
+        <div class="section-label">Parties classiques</div>
+
+        <div class="parties-list">
+
+          <div class="party-row">
+            <div class="party-bubble">2</div>
+            <div class="party-info">
+              <div class="party-name">2 Joueurs · Duel</div>
+              <div class="party-meta">~10 min</div>
+            </div>
+            <div class="party-chevron">›</div>
+          </div>
+
+          <div class="party-row">
+            <div class="party-bubble">3</div>
+            <div class="party-info">
+              <div class="party-name">3 Joueurs · Trio</div>
+              <div class="party-meta">~15 min</div>
+            </div>
+            <div class="party-chevron">›</div>
+          </div>
+
+          <div class="party-row">
+            <div class="party-bubble">4</div>
+            <div class="party-info">
+              <div class="party-name">4 Joueurs</div>
+              <div class="party-meta">~20 min</div>
+            </div>
+            <div class="party-chevron">›</div>
+          </div>
+
+          <div class="party-row">
+            <div class="party-bubble">6</div>
+            <div class="party-info">
+              <div class="party-name">6 Joueurs · Grande tablée</div>
+              <div class="party-meta">~25 min</div>
+            </div>
+            <div class="party-chevron">›</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navbar -->
+      <div class="navbar">
+        <div class="nav-item">
+          <div class="nav-icon">🏠</div>
+          <div class="nav-label">Accueil</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-icon">👤</div>
+          <div class="nav-label">Profil</div>
+        </div>
+        <div class="nav-fab">
+          <div class="nav-icon">▶</div>
+          <div class="nav-label">Jouer</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-icon">🎯</div>
+          <div class="nav-label">Missions</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-icon">🛍️</div>
+          <div class="nav-label">Boutique</div>
+        </div>
+      </div>
+
+    </div>
+    <figcaption>Jouer</figcaption>
+  </figure>
+</div>
+
+<script>
+(function(){
+  var R={accueil:'01-accueil.html',partie:'02-partie.html',jouer:'03-jouer.html',resultat:'04-resultat.html',
+    missions:'05-missions.html',cadeaux:'06-cadeaux.html',succes:'07-succes.html',profil:'08-profil.html',
+    pavatars:'09-perso-avatars.html',pcadres:'10-perso-cadres.html',pbannieres:'11-perso-bannieres.html',
+    pmedailles:'12-perso-medailles.html',boutique:'13-boutique.html',encyclo:'14-encyclopedie.html',
+    fiche:'15-encyclopedie-fiche.html',parametres:'16-parametres.html'};
+  function route(t){
+    if(!t) return null; t=t.toLowerCase();
+    if(t==='avatars') return R.pavatars;
+    if(t==='cadres') return R.pcadres;
+    if((t.indexOf('bannière')>-1||t.indexOf('banniere')>-1)&&t.length<14) return R.pbannieres;
+    if(t==='médailles'||t==='medailles') return R.pmedailles;
+    if(t.indexOf('personnalis')>-1) return R.pavatars;
+    if(t.indexOf('encyclop')>-1) return R.encyclo;
+    if(/\bjoueurs\b/.test(t)||t.indexOf('grande tablée')>-1||t.indexOf('duel')>-1||t.indexOf('trio')>-1) return R.partie;
+    if(t.indexOf('jouer')>-1) return R.jouer;
+    if(t.indexOf('paramètre')>-1||t.indexOf('parametre')>-1||t.indexOf('réglage')>-1) return R.parametres;
+    if(t.indexOf('cadeau')>-1) return R.cadeaux;
+    if(t.indexOf('succès')>-1||t.indexOf('bientôt débloqué')>-1||t.indexOf('assidu')>-1||t.indexOf('prouesse')>-1) return R.succes;
+    if(t.indexOf('mission')>-1) return R.missions;
+    if(t.indexOf('boutique')>-1||t.indexOf('acheter')>-1||t.indexOf('obtenir')>-1||t.indexOf('offre')>-1||t.indexOf('promo')>-1||t.indexOf('recharge')>-1) return R.boutique;
+    if(t.indexOf('profil')>-1) return R.profil;
+    if(t.indexOf('accueil')>-1) return R.accueil;
+    return null;
+  }
+  document.addEventListener('click',function(e){
+    var node=e.target, hops=0;
+    while(node && !(node.classList&&node.classList.contains('screen')) && hops<5){
+      var cls=(node.className&&node.className.baseVal!==undefined)?node.className.baseVal:(node.className||'');
+      var tx=(node.textContent||'').trim();
+      if((/back/i.test(''+cls))||tx==='‹'||tx==='←'){ e.preventDefault(); if(history.length>1) history.back(); else location.href=R.accueil; return; }
+      var f=route(tx);
+      if(f){ e.preventDefault(); location.href=f; return; }
+      node=node.parentElement; hops++;
+    }
+  },true);
+})();
+</script>
+</body></html>

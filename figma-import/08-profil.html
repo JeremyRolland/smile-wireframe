@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="margin:0;padding:18px;display:flex;justify-content:center;background:transparent">
+<div class="scr2"><style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+
+.scr2 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.scr2 figure.ph {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.scr2 figure.ph figcaption {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #555;
+  letter-spacing: .5px;
+}
+
+.scr2 .screen {
+  width: 300px;
+  height: 640px;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 50% 42%, #1A6FC0 0%, rgba(26,111,192,0) 34%),
+    repeating-conic-gradient(from -90deg at 50% 42%, #52A6E0 0deg 11.25deg, #0F478C 11.25deg 22.5deg),
+    #0F478C;
+  font-family: 'Nunito', sans-serif;
+}
+
+.scr2 .screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 22px;
+  background: rgba(0,0,0,.55);
+  border-radius: 0 0 18px 18px;
+  z-index: 100;
+}
+
+.scr2 .p-header {
+  flex-shrink: 0;
+  padding: 28px 18px 10px;
+  text-align: center;
+}
+
+.scr2 .p-header h1 {
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: .3px;
+  text-shadow: 0 1px 4px rgba(0,0,0,.35);
+}
+
+.scr2 .p-scroll {
+  flex: 1 1 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: none;
+}
+.scr2 .p-scroll::-webkit-scrollbar { display: none; }
+
+.scr2 .vitrine {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  flex-shrink: 0;
+}
+
+.scr2 .vitrine-banner {
+  background: linear-gradient(135deg, #2980b9 0%, #8e44ad 50%, #c0392b 100%);
+  height: 52px;
+  position: relative;
+}
+
+.scr2 .vitrine-body {
+  background: #FFF8EE;
+  padding: 6px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.scr2 .avatar-wrap {
+  position: relative;
+  margin-top: -28px;
+}
+
+.scr2 .avatar-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFD15C, #E8A91E);
+  border: 3px solid #E8A91E;
+  box-shadow: 0 0 0 2px #fff, 0 3px 10px rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.scr2 .pseudo {
+  font-size: 14px;
+  font-weight: 900;
+  color: #0F478C;
+}
+
+.scr2 .badge-niv {
+  background: linear-gradient(135deg, #FFD15C, #FFC233, #E8A91E);
+  color: #0F478C;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+
+.scr2 .xp-bar-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.scr2 .xp-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #888;
+}
+
+.scr2 .xp-track {
+  width: 100%;
+  height: 6px;
+  background: #e0d4c0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.scr2 .xp-fill {
+  height: 100%;
+  width: 68%;
+  background: linear-gradient(90deg, #FFD15C, #FFC233, #E8A91E);
+  border-radius: 10px;
+}
+
+.scr2 .medals-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.scr2 .medal {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+  border: 1.5px solid #e0d4c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+
+.scr2 .stats-panel {
+  background: #FFF8EE;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.18);
+  flex-shrink: 0;
+}
+
+.scr2 .stats-title {
+  background: linear-gradient(135deg, #FFD15C, #FFC233, #E8A91E);
+  color: #0F478C;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 6px 12px;
+  letter-spacing: .4px;
+}
+
+.scr2 .stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a3a5c;
+}
+
+.scr2 .stat-row:nth-child(odd) {
+  background: rgba(255,195,51,.10);
+}
+
+.scr2 .stat-val {
+  font-weight: 900;
+  color: #0F478C;
+  font-size: 11px;
+}
+
+.scr2 .stat-val.accent {
+  color: #E8A91E;
+}
+
+.scr2 .p-buttons {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 12px 8px;
+}
+
+.scr2 .btn-primary {
+  background: linear-gradient(135deg, #FFD15C, #FFC233, #E8A91E);
+  color: #0F478C;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  border: none;
+  border-radius: 14px;
+  padding: 11px 16px;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 3px 10px rgba(232,169,30,.45);
+  letter-spacing: .2px;
+}
+
+.scr2 .btn-secondary {
+  background: rgba(255,255,255,.14);
+  border: 1.5px solid rgba(255,255,255,.30);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 14px;
+  padding: 10px 16px;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  backdrop-filter: blur(6px);
+  letter-spacing: .2px;
+}
+
+.scr2 .nav-bar {
+  flex-shrink: 0;
+  background: #FFF8EE;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+  border-top: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 -2px 10px rgba(0,0,0,.1);
+}
+
+.scr2 .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.scr2 .nav-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.scr2 .nav-label {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #aaa;
+  letter-spacing: .2px;
+}
+
+.scr2 .nav-item.active .nav-label { color: #FFC233; }
+
+.scr2 .nav-fab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+}
+
+.scr2 .nav-fab-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFD15C, #FFC233, #E8A91E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 3px 10px rgba(232,169,30,.5);
+  margin-top: -14px;
+}
+
+.scr2 .nav-fab .nav-label {
+  font-size: 8px;
+  font-weight: 800;
+  color: #FFC233;
+  margin-top: 1px;
+}
+</style><figure class="ph"><div class="screen">
+
+  <div class="p-header">
+    <h1>Profil 👤</h1>
+  </div>
+
+  <div class="p-scroll">
+
+    <div class="vitrine">
+      <div class="vitrine-banner"></div>
+      <div class="vitrine-body">
+        <div class="avatar-wrap">
+          <div class="avatar-circle">🧑</div>
+        </div>
+        <div class="pseudo">Jérémy</div>
+        <div class="badge-niv">Niv. 12</div>
+        <div class="xp-bar-wrap">
+          <div class="xp-label">6 800 / 10 000 XP</div>
+          <div class="xp-track"><div class="xp-fill"></div></div>
+        </div>
+        <div class="medals-row">
+          <div class="medal">🥇</div>
+          <div class="medal">🎯</div>
+          <div class="medal">🃏</div>
+          <div class="medal">⭐</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-panel">
+      <div class="stats-title">📊 STATISTIQUES</div>
+      <div class="stat-row"><span>Parties jouées</span><span class="stat-val">84</span></div>
+      <div class="stat-row"><span>Victoires</span><span class="stat-val">37</span></div>
+      <div class="stat-row"><span>Défaites</span><span class="stat-val">47</span></div>
+      <div class="stat-row"><span>Taux de victoire</span><span class="stat-val accent">44 %</span></div>
+      <div class="stat-row"><span>Meilleur score</span><span class="stat-val">38 😊</span></div>
+      <div class="stat-row"><span>Smiles (carrière)</span><span class="stat-val accent">48 720</span></div>
+      <div class="stat-row"><span>Série de victoires</span><span class="stat-val">5 🔥</span></div>
+    </div>
+
+  </div>
+
+  <div class="p-buttons">
+    <button class="btn-primary">🎨 Personnaliser ›</button>
+    <button class="btn-secondary">📚 Encyclopédie ›</button>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-item">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Accueil</span>
+    </div>
+    <div class="nav-item active">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label" style="color:#FFC233;">Profil</span>
+    </div>
+    <div class="nav-fab">
+      <div class="nav-fab-circle">▶</div>
+      <span class="nav-label">Jouer</span>
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">🎯</span>
+      <span class="nav-label">Missions</span>
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">🛍️</span>
+      <span class="nav-label">Boutique</span>
+    </div>
+  </div>
+
+</div><figcaption>Profil</figcaption></figure></div>
+
+
+<script>
+(function(){
+  var R={accueil:'01-accueil.html',partie:'02-partie.html',jouer:'03-jouer.html',resultat:'04-resultat.html',
+    missions:'05-missions.html',cadeaux:'06-cadeaux.html',succes:'07-succes.html',profil:'08-profil.html',
+    pavatars:'09-perso-avatars.html',pcadres:'10-perso-cadres.html',pbannieres:'11-perso-bannieres.html',
+    pmedailles:'12-perso-medailles.html',boutique:'13-boutique.html',encyclo:'14-encyclopedie.html',
+    fiche:'15-encyclopedie-fiche.html',parametres:'16-parametres.html'};
+  function route(t){
+    if(!t) return null; t=t.toLowerCase();
+    if(t==='avatars') return R.pavatars;
+    if(t==='cadres') return R.pcadres;
+    if((t.indexOf('bannière')>-1||t.indexOf('banniere')>-1)&&t.length<14) return R.pbannieres;
+    if(t==='médailles'||t==='medailles') return R.pmedailles;
+    if(t.indexOf('personnalis')>-1) return R.pavatars;
+    if(t.indexOf('encyclop')>-1) return R.encyclo;
+    if(/\bjoueurs\b/.test(t)||t.indexOf('grande tablée')>-1||t.indexOf('duel')>-1||t.indexOf('trio')>-1) return R.partie;
+    if(t.indexOf('jouer')>-1) return R.jouer;
+    if(t.indexOf('paramètre')>-1||t.indexOf('parametre')>-1||t.indexOf('réglage')>-1) return R.parametres;
+    if(t.indexOf('cadeau')>-1) return R.cadeaux;
+    if(t.indexOf('succès')>-1||t.indexOf('bientôt débloqué')>-1||t.indexOf('assidu')>-1||t.indexOf('prouesse')>-1) return R.succes;
+    if(t.indexOf('mission')>-1) return R.missions;
+    if(t.indexOf('boutique')>-1||t.indexOf('acheter')>-1||t.indexOf('obtenir')>-1||t.indexOf('offre')>-1||t.indexOf('promo')>-1||t.indexOf('recharge')>-1) return R.boutique;
+    if(t.indexOf('profil')>-1) return R.profil;
+    if(t.indexOf('accueil')>-1) return R.accueil;
+    return null;
+  }
+  document.addEventListener('click',function(e){
+    var node=e.target, hops=0;
+    while(node && !(node.classList&&node.classList.contains('screen')) && hops<5){
+      var cls=(node.className&&node.className.baseVal!==undefined)?node.className.baseVal:(node.className||'');
+      var tx=(node.textContent||'').trim();
+      if((/back/i.test(''+cls))||tx==='‹'||tx==='←'){ e.preventDefault(); if(history.length>1) history.back(); else location.href=R.accueil; return; }
+      var f=route(tx);
+      if(f){ e.preventDefault(); location.href=f; return; }
+      node=node.parentElement; hops++;
+    }
+  },true);
+})();
+</script>
+</body></html>
