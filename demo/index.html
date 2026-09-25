@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0F478C">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>Smile Life — Démo</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0F478C;--gold:#FFC233;--ink:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);overflow:hidden;font-family:Nunito,system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent}
+#stage{position:fixed;left:50%;top:50%;width:844px;height:390px;transform-origin:center;transition:opacity .12s}
+#stage.out{opacity:0}
+#screen{width:844px;height:390px;border:0;display:block;background:var(--bg)}
+#start,#rotate{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--bg);text-align:center;padding:16px;z-index:10}
+#start h1{font-size:28px;font-weight:900}
+#start p,#rotate p{font-size:15px;font-weight:700;opacity:.8}
+#start button{min-height:54px;padding:0 32px;border:0;border-radius:999px;background:linear-gradient(135deg,#FFD15C,#FFC233,#E8A91E);color:var(--bg);font:900 18px Nunito,system-ui,sans-serif;cursor:pointer}
+#start small{font-size:12px;opacity:.6}
+#rotate{display:none;font-size:48px}
+@media (orientation:portrait) and (max-width:700px){#rotate{display:flex}}
+</style>
+</head>
+<body>
+<div id="stage"><iframe id="screen" title="Écran"></iframe></div>
+<div id="start">
+  <h1>Smile Life 😊</h1>
+  <p>Prototype de l'app · 9 écrans</p>
+  <button id="go">Lancer la démo ▶</button>
+  <small>Sur téléphone : plein écran, en paysage</small>
+</div>
+<div id="rotate">📱↻<p>Tourne le téléphone en paysage</p></div>
+<script>
+const stage=document.getElementById('stage'),frame=document.getElementById('screen');
+const state={screen:'accueil',mirror:false};
+function fit(){const s=Math.min(innerWidth/844,innerHeight/390);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+function open(screen,arg){
+  state.screen=screen;
+  const p=new URLSearchParams(arg||'');if(state.mirror)p.set('m','1');
+  stage.classList.add('out');
+  setTimeout(()=>{frame.src=screen+'.html'+(p.toString()?'#'+p:'')},120);
+  try{history.replaceState(null,'','#'+screen)}catch(e){}
+}
+frame.onload=()=>stage.classList.remove('out');
+addEventListener('message',e=>{
+  const d=e.data||{};
+  if(d.demo==='go')open(d.screen,d.arg);
+  if(d.demo==='mirror')state.mirror=!!d.on;
+});
+addEventListener('resize',fit);fit();
+open(location.hash.slice(1)||'accueil');
+document.getElementById('go').onclick=async()=>{
+  document.getElementById('start').remove();
+  try{await document.documentElement.requestFullscreen()}catch(e){}
+  try{await screen.orientation.lock('landscape')}catch(e){}
+  fit();
+};
+</script>
+</body>
+</html>
