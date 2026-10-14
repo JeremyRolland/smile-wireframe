@@ -206,7 +206,8 @@ html,body{background:#0F478C!important;overflow:hidden!important}
 .ph{margin:0!important;border-radius:0!important;box-shadow:none!important}
 body.fiche #ph,body:not(.fiche) #ph2{display:none!important}
 @media (pointer:coarse){.ph .notch{display:none!important}}
-.nav>div,.gear,.tabs>div,.dots i,.back,.btn2,[data-go]{cursor:pointer}
+.nav>div,.gear,.tabs>div,.dots i,.back,.btn2,[data-go],#act,#grid .it,.sl,.sw,.seg>span{cursor:pointer}
+.ph .sl{touch-action:none}.ph .sl:before{content:'';position:absolute;left:-8px;right:-8px;top:-16px;bottom:-16px}
 </style>
 </head>
 <body>
@@ -381,16 +382,46 @@ LINKS.forEach(([sel,s,a,k])=>document.querySelectorAll('.ph '+sel).forEach((el,i
 phs().forEach(ph=>ph.querySelectorAll('.tabs>div').forEach((t,i)=>{if(!t.onclick&&window.tab)t.onclick=()=>tab(i)}));
 document.querySelectorAll('.ph .dots i').forEach((d,i)=>d.onclick=()=>window.show&&show(i));
 window.openFiche=()=>document.body.classList.add('fiche');
+let bal=2450;
+function buy(){
+  const items=RAYONS[cur][1],i=[...document.querySelectorAll('#grid .it')].findIndex(e=>e.classList.contains('sel')),a=items[i];
+  if(!a||a[5]==='eq')return;
+  const b=document.getElementById('act');
+  if(a[5]==='own'){
+    const grp=x=>cur===3?x[1]:'';
+    items.forEach(x=>{if(x[5]==='eq'&&grp(x)===grp(a))x[5]='own'});
+    a[5]='eq';
+  }else{
+    if(a[3]&&bal<a[3]){b.textContent='Solde insuffisant';b.className='act done';setTimeout(()=>sel(i),1200);return}
+    if(a[3]){bal-=a[3];document.querySelector('.balance').textContent='😊 '+fmt(bal)}
+    a[5]='own';
+  }
+  tab(cur);sel(i);
+}
 document.addEventListener('click',e=>{
   const t=e.target;
   const d=t.closest('[data-go]');if(d){go(d.dataset.go,d.dataset.arg);return}
+  if(t.closest('#act')&&typeof RAYONS!=='undefined'){buy();return}
   const n=t.closest('.nav>div');if(n){const k=n.classList.contains('fabw')?'Jouer':n.lastChild.textContent.trim();
     if(document.body.classList.contains('fiche')&&k==='Profil'){document.body.classList.remove('fiche');return}
     if(NAV[k])go(NAV[k]);return}
   if(t.closest('.gear')){go('reglages');return}
   if(t.closest('.back')){document.body.classList.remove('fiche');return}
-  const b=t.closest('.btn2.get');if(b){b.classList.remove('get');b.textContent='✓ Récupéré';b.style.opacity=.6}
+  const b=t.closest('.btn2.get,.d.today .btn2');if(b){b.classList.remove('get');b.textContent='✓ Récupéré';b.style.opacity=.6}
 });
+const rowsEl=document.getElementById('rows');
+if(rowsEl){
+  const slv={};
+  const setSl=(sl,p)=>{sl.firstChild.style.width=p+'%';sl.lastChild.style.left=p+'%'};
+  const lab=sl=>sl.parentNode.querySelector('.lb').firstChild.textContent;
+  const apply=()=>rowsEl.querySelectorAll('.sl').forEach(sl=>{const v=slv[lab(sl)];if(v!==undefined)setSl(sl,v)});
+  new MutationObserver(apply).observe(rowsEl,{childList:true});
+  let cur=null;
+  const move=e=>{const r=cur.getBoundingClientRect(),p=Math.round(Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*100);slv[lab(cur)]=p;setSl(cur,p)};
+  rowsEl.addEventListener('pointerdown',e=>{const sl=e.target.closest('.sl');if(!sl)return;cur=sl;sl.setPointerCapture(e.pointerId);move(e)});
+  rowsEl.addEventListener('pointermove',e=>{if(cur)move(e)});
+  ['pointerup','pointercancel'].forEach(t=>rowsEl.addEventListener(t,()=>{cur=null}));
+}
 new MutationObserver(()=>parent.postMessage({demo:'mirror',on:document.getElementById('ph').classList.contains('mirror')},'*'))
   .observe(document.getElementById('ph'),{attributes:true,attributeFilter:['class']});
 })();
